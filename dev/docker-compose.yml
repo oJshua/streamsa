@@ -1,0 +1,39 @@
+version: "2"
+services:
+
+  ipfs_node1:
+    image: ipfs/go-ipfs:latest
+    # ports:
+    # - "4001:4001"
+    # - "5001:5001"
+    volumes:
+    - ./node1:/data/ipfs
+
+  ipfs_node2:
+    image: ipfs/go-ipfs:latest
+    # ports:
+    # - "4003:4001"
+    # - "5003:5001"
+    volumes:
+    - ./node2:/data/ipfs
+
+  leader1:
+    build: ../leader
+    volumes:
+      - ../leader:/app
+      - /home/joshhundley/workspace/p2p/ipfs-pubsub-room:/app/node_modules/ipfs-pubsub-room
+
+  node1:
+    build: ../node
+    ports:
+      - 8998:8999
+    volumes:
+      - ../node:/app
+      - /home/joshhundley/workspace/p2p/ipfs-pubsub-room:/app/node_modules/ipfs-pubsub-room
+      - ../controlpanel:/controlpanel
+
+  node2:
+    build: ../node
+    volumes:
+      - ../node:/app
+      - /home/joshhundley/workspace/p2p/ipfs-pubsub-room:/app/node_modules/ipfs-pubsub-room

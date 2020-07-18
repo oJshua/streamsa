@@ -32,8 +32,8 @@ services:
       - /home/joshhundley/workspace/p2p/ipfs-pubsub-room:/app/node_modules/ipfs-pubsub-room
       - ../controlpanel:/controlpanel
 
-  node2:
-    build: ../node
-    volumes:
-      - ../node:/app
-      - /home/joshhundley/workspace/p2p/ipfs-pubsub-room:/app/node_modules/ipfs-pubsub-room
+  # node2:
+  #   build: ../node
+  #   volumes:
+  #     - ../node:/app
+  #     - /home/joshhundley/workspace/p2p/ipfs-pubsub-room:/app/node_modules/ipfs-pubsub-room

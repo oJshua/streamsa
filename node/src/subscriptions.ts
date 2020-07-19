@@ -12,6 +12,7 @@ export interface Streamer {
 export interface Stream {
   _id?: string;
   url: string;
+  streamer: string;
 }
 
 export class Subscriptions {
@@ -22,10 +23,13 @@ export class Subscriptions {
   constructor() {
   }
 
-  async getStreamers() {
+  async getStreamers(): Promise<Streamer[]> {
     try {
-      let res = await this.db.query('subscriptions_index/by_url');
-      return res;
+      let res = await this.db.query('subscriptions_index/streamers');
+
+      let streamers = res.rows.map(o => o.value);
+
+      return streamers;
     } catch(error) {
       throw error;
     }

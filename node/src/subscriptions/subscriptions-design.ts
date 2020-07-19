@@ -7,27 +7,30 @@ export interface DesignDocument {
   views: any;
 }
 
-
-function emit(key: any, doc?: any) {
-}
+function emit(key: any, doc?: any) { }
 
 export class SubscriptionsDesign {
   @Inject
   private db: SubscriptionsDatabase;
 
-
   async load() {
-
     try {
-
       await this.loadDesign({
         _id: '_design/subscriptions_index',
         views: {
-          by_url: {
+          streamers: {
             map: ((doc) => {
               let parts = doc._id.split(':');
               if (parts[0] === 'streamer') {
-                emit(doc.url, doc);
+                emit(doc._id, doc);
+              }
+            }).toString()
+          },
+          streams: {
+            map: ((doc) => {
+              let parts = doc._id.split(':');
+              if (parts[0] === 'stream') {
+                emit(doc._id, doc);
               }
             }).toString()
           }
@@ -37,11 +40,9 @@ export class SubscriptionsDesign {
     } catch(error) {
       throw error;
     }
-
   }
 
   async loadDesign(design: DesignDocument) {
-
     let doc;
 
     try {
@@ -63,8 +64,6 @@ export class SubscriptionsDesign {
     } catch(error) {
       throw error;
     }
-
   }
 
 }
-

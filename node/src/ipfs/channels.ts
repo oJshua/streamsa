@@ -1,6 +1,6 @@
 import { StreamerChannel } from "./streamer-channel";
-import { Streamer } from "../subscriptions";
 import { LobbyChannel } from "./lobby-channel";
+import { Streamer } from "../models/streamer";
 
 export class Channels {
 
@@ -11,7 +11,17 @@ export class Channels {
   // streams: { [id: string] : Channel } = {};
 
   constructor(private ipfs: any) {
-    this.lobby = new LobbyChannel(ipfs);
+    this.lobby = new LobbyChannel(ipfs, this);
+  }
+
+  belongsToChannel(topic: string): boolean {
+    if (topic in this.streamers) {
+      return true;
+    }
+
+    /*if (topic in this.streams)*/
+
+    return false;
   }
 
   addStreamer(streamer: Streamer) {

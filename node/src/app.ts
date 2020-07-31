@@ -37,6 +37,12 @@ const PORT = process.env.PORT || 8999;
       tags: ['blm']
     });
 
+    await subscriptions.addStreamer({
+      name: 'Sol Luna',
+      url: 'https://www.facebook.com/Sol.Luna.Xi',
+      tags: ['blm']
+    });
+
     let streamers = await subscriptions.getStreamers();
 
     for(let streamer of streamers) {

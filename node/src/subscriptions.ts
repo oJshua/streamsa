@@ -1,19 +1,7 @@
 import { SubscriptionsDatabase } from "./database";
 import { Inject } from "typescript-ioc";
-
-export interface Streamer {
-  _id?: string;
-  _rev?: string;
-  url: string;
-  name: string;
-  tags: string[];
-}
-
-export interface Stream {
-  _id?: string;
-  url: string;
-  streamer: string;
-}
+import { Streamer } from "./models/streamer";
+import { Stream } from "./models/stream";
 
 export class Subscriptions {
 

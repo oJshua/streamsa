@@ -8,4 +8,4 @@ export class SubscriptionsDatabase extends PouchDB {
 
 }
 
-export const subscriptionsDatabaseFactory = () => new SubscriptionsDatabase(path.join(__dirname, '../subscriptions.db'));
+export const subscriptionsDatabaseFactory = () => new SubscriptionsDatabase(path.join(__dirname, '../data/subscriptions.db'));

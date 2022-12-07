@@ -16,7 +16,7 @@
     "@types/pouchdb": "^6.4.0",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
-    "ipfs": "^0.48.0",
+    "ipfs": "^0.65.0",
     "ipfs-http-client": "^45.0.0",
     "ipfs-pubsub-room": "^2.0.1",
     "node-fetch": "^2.6.0",
